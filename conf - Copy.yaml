@@ -1,0 +1,23 @@
+﻿name: for test purpose
+interval: 5
+resource: 'c:\script'
+logger: 'c:\log'
+task:
+  - Job:
+      id: 1
+      name: for PowerShell
+      type: PS1
+      command: Get-Process -Name notepad
+      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat'
+
+  #- Job:
+  #    id: 2
+  #    name: for Bat
+  #    type: BAT
+  #    command: wmic process where name='notepad.exe' call terminate()
+  #    url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat'
+  #- Job:
+  #    id: 3
+  #    name: for vbs
+  #    type: VBS
+  #    url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.vbs'

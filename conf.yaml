@@ -1,0 +1,34 @@
+﻿name: for test purpose
+interval: 5
+resource: c:\script
+logger: c:\log2
+
+#Be carful task will execute parallels.no orders.
+task:
+  - Job:
+      id: 1
+      name: PowerShell
+      type: PWSH
+      command: Get-Process -Name notepad
+      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat'
+  - Job:
+      id: 2
+      name: cmd command
+      type: BAT
+      command: getmac /v
+      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
+
+  - Job:
+      id: 3
+      name: vbs command
+      type: VBS
+      command: cscript //Nologo c:\scripts\t.vbs
+      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
+  - Job:
+      id: 4
+      name: get srv
+      type: PWSH
+      #Be care special characters.
+      command: >+
+        "Get-Service -Name Win*|? {$_.Status -eq \"Stopped\"}|Out-File c:\log\4.txt;cat c:\log\4.txt"
+      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
