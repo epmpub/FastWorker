@@ -10,15 +10,21 @@ namespace TestYamlFile
     {
         public Executor(Config c)
         {
-
-            Log.Logger = new LoggerConfiguration()
-             .MinimumLevel.Debug()
-             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-             .Enrich.FromLogContext()
-             .WriteTo.Console()
-             .WriteTo.File(c.Logger + "\\pwshCMD-stdout.txt", encoding: Encoding.UTF8)
-             .CreateLogger();
+            var Logger = new MyLogger();
+            Logger.Setup(c);
+            //LoggerSetup(c);
         }
+
+        //private static void LoggerSetup(Config c)
+        //{
+        //    Log.Logger = new LoggerConfiguration()
+        //     .MinimumLevel.Debug()
+        //     .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+        //     .Enrich.FromLogContext()
+        //     .WriteTo.Console()
+        //     .WriteTo.File(c.Logger + "\\pwshCMD-stdout.txt", encoding: Encoding.UTF8)
+        //     .CreateLogger();
+        //}
 
         public void RunPWSHCommand(string command)
         {
@@ -36,7 +42,7 @@ namespace TestYamlFile
             process.Start();
 
             Log.Information(process.StandardOutput.ReadToEnd());
-            Log.Error(process.StandardError.ReadToEnd());
+            //Log.Error(process.StandardError.ReadToEnd());
 
         }
         public void RunBATCommand(string command)
@@ -55,7 +61,6 @@ namespace TestYamlFile
             process.Start();
 
             Log.Information(process.StandardOutput.ReadToEnd());
-            Log.Error(process.StandardError.ReadToEnd());
 
         }
 
@@ -75,7 +80,6 @@ namespace TestYamlFile
             process.Start();
 
             Log.Information(process.StandardOutput.ReadToEnd());
-            Log.Error(process.StandardError.ReadToEnd());
 
         }
 

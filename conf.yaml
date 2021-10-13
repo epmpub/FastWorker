@@ -30,5 +30,5 @@ task:
       type: PWSH
       #Be care special characters.
       command: >+
-        "Get-Service -Name Win*|? {$_.Status -eq \"Stopped\"}|Out-File c:\log\4.txt;cat c:\log\4.txt"
+        "Get-Service -Name Win*|? {$_.Status -eq \"Stopped\"}|% {$_.CanPauseAndContinue}|Out-File c:\log\4.txt;cat c:\log\4.txt"
       url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
