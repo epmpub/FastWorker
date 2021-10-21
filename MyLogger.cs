@@ -3,7 +3,7 @@ using Serilog.Events;
 using System;
 using System.Text;
 
-namespace TestYamlFile
+namespace FastWorker
 {
     internal class MyLogger
     {

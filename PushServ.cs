@@ -5,7 +5,7 @@ using Serilog;
 using System;
 using System.Threading;
 
-namespace TestYamlFile
+namespace FastWorker
 {
     public static class MQExtensions
     {

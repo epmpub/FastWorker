@@ -1,4 +1,4 @@
-﻿namespace TestYamlFile
+﻿namespace FastWorker
 {
     internal class CommandX
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace TestYamlFile
+namespace FastWorker
 {
     internal class Executor
     {

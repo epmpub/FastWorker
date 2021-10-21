@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace TestYamlFile
+namespace FastWorker
 {
     internal class Helper
     {

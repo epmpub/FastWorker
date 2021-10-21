@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-namespace TestYamlFile
+namespace FastWorker
 {
     class Program
     {
