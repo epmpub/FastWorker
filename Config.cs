@@ -12,16 +12,29 @@ namespace TestYamlFile
         public int Interval { get; set; }
         public string Resource { get; set; }
         public string Logger { get; set; }
-        public List<Dictionary<string, Job>> Task { get; set; }
+        public List<Dictionary<string, Command>> Tasks { get; set; }
+        public List<Dictionary<string, Script>> Scripts { get; set; }
+
     }
 
-    public class Job
+    public class Command
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-        public string Command { get; set; }
+        public string Cmd { get; set; }
+    }
+
+
+
+    public class Script
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
         public string Url { get; set; }
     }
+
+
 
 }

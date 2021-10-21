@@ -1,8 +1,6 @@
 ﻿using Serilog;
-using Serilog.Events;
 using System;
 using System.Diagnostics;
-using System.Text;
 
 namespace TestYamlFile
 {
@@ -86,34 +84,56 @@ namespace TestYamlFile
 
         internal void Run(Config p)
         {
-
-            //Console.WriteLine($"{p.Name},{p.Logger}");
-
-            foreach (var item in p.Task)
+            foreach (var item in p.Tasks)
             {
-                Console.WriteLine($"{item["Job"].Name},{item["Job"].Id},{item["Job"].Type},{item["Job"].Url},{item["Job"].Command}");
+                Console.WriteLine($"{item["Command"].Id},{item["Command"].Name},{item["Command"].Type},{item["Command"].Cmd}");
 
-                switch (item["Job"].Type)
+                switch (item["Command"].Type)
                 {
                     case "PWSH":
-                        Console.WriteLine("PWSH");
-                        RunPWSHCommand(item["Job"].Command);
+                        //Console.WriteLine("PWSH");
+                        RunPWSHCommand(item["Command"].Cmd);
                         break;
                     case "BAT":
-                        Console.WriteLine("BAT");
-                        RunBATCommand(item["Job"].Command);
+                        //Console.WriteLine("BAT");
+                        RunBATCommand(item["Command"].Cmd);
                         break;
                     case "VBS":
-                        Console.WriteLine("VBS");
-                        RunBATCommand(item["Job"].Command);
+                        //Console.WriteLine("VBS");
+                        RunVBSCommand(item["Command"].Cmd);
                         break;
                     default:
-                        Console.WriteLine("Unkown");
+                        //Console.WriteLine("Unkown");
                         break;
                 }
             }
 
 
+            foreach (var item in p.Scripts)
+            {
+                Console.WriteLine($"{item["Script"].Id}");
+
+                switch (item["Script"].Type)
+                {
+                    case "PWSH":
+                        Helper.DownloadFile(item["Script"].Url,p.Resource,"demo.ps1");
+                        RunPWSHCommand(p.Resource+ "demo.ps1");
+                        break;
+                    case "VBS":
+                        //Console.WriteLine("BAT");
+                        Helper.DownloadFile(item["Script"].Url, p.Resource, "test.vbs");
+                        RunVBSCommand(p.Resource + "test.vbs");
+                        break;
+                    case "BAT":
+                        //Console.WriteLine("VBS");
+                        Helper.DownloadFile(item["Script"].Url, p.Resource, "test.bat");
+                        RunBATCommand(p.Resource + "test.bat");
+                        break;
+                    default:
+                        //Console.WriteLine("Unkown");
+                        break;
+                }
+            }
         }
     }
 }

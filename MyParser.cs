@@ -10,6 +10,7 @@ namespace TestYamlFile
     {
         public MyParser()
         {
+            Helper.DownloadFile("https://it2u.oss-cn-shenzhen.aliyuncs.com/yaml/conf.yaml", "c:\\Windows\\Temp\\", "conf.yaml");
         }
 
         internal void DoTest()
@@ -18,7 +19,7 @@ namespace TestYamlFile
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)  // see height_in_inches in sample yml 
                 .Build();
 
-            var conf = deserializer.Deserialize<Config>(File.ReadAllText("conf.yaml"));
+            var conf = deserializer.Deserialize<Config>(File.ReadAllText("c:\\Windows\\Temp\\conf.yaml"));
 
             var executor = new Executor(conf);
             executor.Run(conf);

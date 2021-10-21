@@ -17,11 +17,11 @@ namespace TestYamlFile
              .MinimumLevel.Debug()
              .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
              .Enrich.FromLogContext()
-             .WriteTo.Console()
+             //.WriteTo.Console()
              .WriteTo.File(c.Logger + "\\pwshCMD-stdout.txt", encoding: Encoding.UTF8)
              .CreateLogger();
         }
-
+        //share global log settings.
         internal void Setup()
         {
             Log.Logger = new LoggerConfiguration()

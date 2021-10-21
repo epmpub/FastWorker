@@ -1,34 +1,47 @@
 ﻿name: for test purpose
 interval: 5
-resource: c:\script
-logger: c:\log2
+resource: c:\script2\
+logger: c:\Windows\Temp
 
 #Be carful task will execute parallels.no orders.
-task:
-  - Job:
+tasks:
+  - Command:
       id: 1
       name: PowerShell
       type: PWSH
-      command: Get-Process -Name notepad
-      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat'
-  - Job:
+      cmd: Get-Process -Name notepad
+  - Command:
       id: 2
       name: cmd command
       type: BAT
-      command: getmac /v
-      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
-
-  - Job:
+      cmd: getmac /v
+  - Command:
       id: 3
       name: vbs command
       type: VBS
-      command: cscript //Nologo c:\scripts\t.vbs
-      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
-  - Job:
+      cmd: cscript //Nologo c:\scripts\t.vbs
+  - Command:
       id: 4
       name: get srv
       type: PWSH
       #Be care special characters.
-      command: >+
+      cmd: >+
         "Get-Service -Name Win*|? {$_.Status -eq \"Stopped\"}|% {$_.CanPauseAndContinue}|Out-File c:\log\4.txt;cat c:\log\4.txt"
-      url: 'https://it2u.oss-cn-shenzhen.aliyuncs.com/test/Demo888.bat2'
+
+
+scripts:
+  - Script:
+      id: 1
+      name: powershell script
+      type: PWSH
+      url: https://it2u.oss-cn-shenzhen.aliyuncs.com/scripts/get-info.PS1
+  - Script:
+      id: 2
+      name: vbs script
+      type: VBS
+      url: https://it2u.oss-cn-shenzhen.aliyuncs.com/test/test.vbs
+  - Script:
+      id: 3
+      name: vbs script
+      type: BAT
+      url: https://it2u.oss-cn-shenzhen.aliyuncs.com/test/test.bat
