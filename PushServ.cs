@@ -50,9 +50,9 @@ namespace FastWorker
             using (var poller = new NetMQPoller { subSocket })
             {
                 subSocket.Options.ReceiveHighWatermark = 1000;
-                subSocket.Connect("tcp://localhost:12345");
+                subSocket.Connect("tcp://sz.epm.pub:8081");
                 subSocket.Subscribe("");
-                Console.WriteLine("Subscriber socket connecting...");
+                Console.WriteLine("connect server");
                 
                 var myLogger = new MyLogger();
                 //TODO:: pass yaml config 
@@ -75,7 +75,7 @@ namespace FastWorker
                         FluentScheduler.JobManager.AddJob(
                                                         () => { 
                                                             Console.WriteLine($"{msg.Name}");
-                                                            var parser = new MyParser();
+                                                            var parser = new PullServ();
                                                             parser.DoTest();
 
 
@@ -86,7 +86,7 @@ namespace FastWorker
                 };
                 while (true)
                 {
-                    Console.WriteLine("Wait for Command.");
+                    Console.WriteLine("Ready for Execute Command.");
                     Thread.Sleep(2 * 1000);
                 }
 

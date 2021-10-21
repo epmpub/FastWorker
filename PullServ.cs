@@ -6,9 +6,9 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace FastWorker
 {
-    internal class MyParser
+    internal class PullServ
     {
-        public MyParser()
+        public PullServ()
         {
             Helper.DownloadFile("https://it2u.oss-cn-shenzhen.aliyuncs.com/yaml/conf.yaml", "c:\\Windows\\Temp\\", "conf.yaml");
         }

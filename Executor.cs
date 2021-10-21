@@ -10,7 +10,6 @@ namespace FastWorker
         {
             var Logger = new MyLogger();
             Logger.Setup(c);
-            //LoggerSetup(c);
         }
 
         //private static void LoggerSetup(Config c)
