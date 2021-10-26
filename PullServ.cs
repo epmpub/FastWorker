@@ -8,18 +8,32 @@ namespace FastWorker
 {
     internal class PullServ
     {
-        public PullServ()
-        {
-            Helper.DownloadFile("https://it2u.oss-cn-shenzhen.aliyuncs.com/yaml/conf.yaml", "c:\\Windows\\Temp\\", "conf.yaml");
-        }
+        public PullServ() { }
 
-        internal void DoTest()
+        internal void DoTest(string url)
         {
+            string configString = null;
+            try
+            {
+                configString = Helper.DownloadString(url);
+            }
+            catch
+            {
+            }
+
             var deserializer = new DeserializerBuilder()
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)  // see height_in_inches in sample yml 
                 .Build();
+            Config conf = null;
+            try
+            {
+                conf = deserializer.Deserialize<Config>(configString/*File.ReadAllText(filePath+fileName)*/);
+            }
+            catch (Exception e)
+            {
 
-            var conf = deserializer.Deserialize<Config>(File.ReadAllText("c:\\Windows\\Temp\\conf.yaml"));
+                Console.WriteLine($"Des error with: {e.Message} ");
+            }
 
             var executor = new Executor(conf);
             executor.Run(conf);

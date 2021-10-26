@@ -14,9 +14,9 @@ namespace FastWorker
 
             //ToDo: Run Pull Serv, Pull Mode.
 
-            Helper.DownloadFile("https://it2u.oss-cn-shenzhen.aliyuncs.com/yaml/conf.yaml", "c:\\windows\\temp\\", "conf.yaml");
-            var pullServ = new PullServ();
-            pullServ.DoTest();
+            //Helper.DownloadFile("https://it2u.oss-cn-shenzhen.aliyuncs.com/yaml/conf.yaml", "c:\\windows\\temp\\", "conf.yaml");
+            //var pullServ = new PullServ();
+            //pullServ.DoTest();
 
         }
     }
